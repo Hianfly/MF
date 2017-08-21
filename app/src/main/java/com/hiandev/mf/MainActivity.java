@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.TextView;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -29,6 +30,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (expired()) {
+            setResult(RESULT_CANCELED);
+            finish();
+            return;
+        }
         setContentView(R.layout.activity_main);
         _txvw_00 = (TextView) findViewById(R.id._txvw_00);
         _txvw_00.setOnClickListener(this);
@@ -64,12 +70,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (lm != null) {
             lm.removeUpdates(ll);
         }
-//        if (lc == null) {
-//            lc = new Location("DUMMY");
-//            lc.setLatitude ( -6.233);
-//            lc.setLongitude(106.854);
-//            Log.e(TAG, "DUMMY");
-//        }
         if (lc != null) {
             new AsyncTask<Void, Void, String>() {
                 @Override
@@ -147,6 +147,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ProgressDialog _prdl_00 = null;
     private TextView _txvw_00 = null;
     private TextView _txvw_01 = null;
+
+    private boolean expired() {
+        boolean b = false;
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int mont = calendar.get(Calendar.MONTH);
+        if (year >= 2017 && mont >= 8) {
+            b = true;
+        }
+        return b;
+    }
 
     private void scan() {
         _txvw_01.setText("");
