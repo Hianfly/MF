@@ -11,7 +11,8 @@ public class HttpFactory {
 
     private static final String TAG = HttpFactory.class.getName();
 
-    public final static String doGet(String url) {
+    public final static String[] doGet(String url) {
+        String[] rs = new String[] { "", "" };
         StringBuilder sb = new StringBuilder();
         BufferedReader br = null;
         BufferedWriter bw = null;
@@ -32,14 +33,16 @@ public class HttpFactory {
                     sb.append(rl).append("\n");
                 }
             }
+            rs[0] = sb.toString();
         } catch (Exception | Error e) {
             Log.e(TAG, Log.getStackTraceString(e));
+            rs[1] = e.getMessage();
         } finally {
             close(br);
             close(bw);
             conn.disconnect();
         }
-        return sb.length() == 0 ? null : sb.toString();
+        return rs;
     }
     private final static void close(BufferedReader br) {
         try {

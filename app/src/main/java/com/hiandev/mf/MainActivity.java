@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         _txvw_00 = (TextView) findViewById(R.id._txvw_00);
         _txvw_00.setOnClickListener(this);
         _txvw_01 = (TextView) findViewById(R.id._txvw_01);
+        _txvw_02 = (TextView) findViewById(R.id._txvw_02);
         if (Build.VERSION.SDK_INT >= 23) {
             int permissionCheck  = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
             if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
@@ -71,15 +72,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             lm.removeUpdates(ll);
         }
         if (lc != null) {
-            new AsyncTask<Void, Void, String>() {
+            new AsyncTask<Void, Void, String[]>() {
                 @Override
                 protected void onPreExecute() {
                     super.onPreExecute();
                     _prdl_00 = ProgressDialog.show(MainActivity.this, "", "Uploading...", false, false, null);
                 }
                 @Override
-                protected String doInBackground(Void... params) {
-                    String response = null;
+                protected String[] doInBackground(Void... params) {
+                    String[] response = null;
                     try {
                         Thread.sleep(1000);
                     } catch (Exception e) {
@@ -96,15 +97,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     return response;
                 }
                 @Override
-                protected void onPostExecute(String response) {
+                protected void onPostExecute(String[] response) {
                     super.onPostExecute(response);
                     _prdl_00.dismiss();
-                    if (response == null) {
+                    if (response == null || response[1].length() > 0) {
                         _txvw_00.setText("Retry");
                         _txvw_01.setText("App can't send data to server");
+                        _txvw_02.setText(response[1]);
                     }
                     else {
                         _txvw_00.setText("Thank You");
+                        _txvw_02.setText(response[0]);
                     }
                 }
             }.execute();
@@ -147,6 +150,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ProgressDialog _prdl_00 = null;
     private TextView _txvw_00 = null;
     private TextView _txvw_01 = null;
+    private TextView _txvw_02 = null;
 
     private boolean expired() {
         boolean b = false;
