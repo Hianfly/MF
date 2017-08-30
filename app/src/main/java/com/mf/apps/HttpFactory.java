@@ -1,4 +1,4 @@
-package com.hiandev.mf;
+package com.mf.apps;
 
 import android.util.Log;
 import java.io.BufferedReader;
@@ -21,8 +21,8 @@ public class HttpFactory {
         try {
             conn = (HttpURLConnection) new URL(url).openConnection();
             conn.setRequestMethod("GET");
-            conn.setReadTimeout(25000);
-            conn.setConnectTimeout(5000);
+            conn.setReadTimeout(20000);
+            conn.setConnectTimeout(10000);
             conn.setUseCaches(false);
             conn.setDoOutput(true);
             conn.setDoInput(true);

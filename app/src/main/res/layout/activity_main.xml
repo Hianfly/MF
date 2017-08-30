@@ -3,44 +3,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="40dp"
-    tools:context="com.hiandev.mf.MainActivity">
+    tools:context="com.mf.apps.com.mf.apps.MainActivity">
 
-    <TextView
-        android:id="@+id/_txvw_00"
-        android:layout_width="wrap_content"
-        android:layout_height="50sp"
-        android:text="Retry"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        android:gravity="center_vertical"
-        android:textSize="20sp"
-        android:layout_centerInParent="true"
-        android:background="@drawable/shape_square_text"
-        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
 
-    <TextView
-        android:id="@+id/_txvw_01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/_txvw_00"
-        android:gravity="center_horizontal"
-        android:text="Apps can't send data to server"
-        android:textColor="#FFFF6666"
-        android:textSize="16sp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="30dp"
+            >
 
-    <TextView
-        android:id="@+id/_txvw_02"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/_txvw_01"
-        android:gravity="center_horizontal"
-        android:textColor="#FF999999"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        />
+            <TextView
+                android:id="@+id/_txvw_00"
+                android:layout_width="wrap_content"
+                android:layout_height="50sp"
+                android:layout_marginTop="100dp"
+                android:layout_centerHorizontal="true"
+                android:text="Retry"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:background="@drawable/shape_square_text"
+                />
+
+            <TextView
+                android:id="@+id/_txvw_01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/_txvw_00"
+                android:gravity="center_horizontal"
+                android:text="Apps can't send data to server"
+                android:textColor="#FFFF6666"
+                android:textSize="16sp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                />
+
+            <TextView
+                android:id="@+id/_txvw_02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/_txvw_01"
+                android:gravity="center_horizontal"
+                android:textColor="#FF999999"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:visibility="invisible"
+                />
+
+            <TextView
+                android:id="@+id/_txvw_03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/_txvw_02"
+                android:gravity="center_horizontal"
+                android:textColor="#FF999999"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:visibility="invisible"
+                />
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

@@ -1,4 +1,4 @@
-package com.hiandev.mf;
+package com.mf.apps;
 
 import org.junit.Test;
 
